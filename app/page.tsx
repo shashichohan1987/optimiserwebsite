@@ -19,10 +19,6 @@ export default function HomePage() {
         <symbol id="optimiser-logo" viewBox="0 0 120 40">
           <text x="0" y="30" fontFamily="Sora,sans-serif" fontWeight="700" fontSize="28" fill="currentColor">Optimiser</text>
         </symbol>
-        <symbol id="optimiser-mark" viewBox="0 0 200 250">
-          <path d="M100 10 C140 10 170 40 170 80 C170 120 140 150 100 150 C60 150 30 120 30 80 C30 40 60 10 100 10 Z M100 30 C70 30 50 52 50 80 C50 108 70 130 100 130 C130 130 150 108 150 80 C150 52 130 30 100 30 Z" fill="currentColor" opacity="0.6"/>
-          <path d="M70 160 L130 160 L150 240 L100 220 L50 240 Z" fill="currentColor" opacity="0.4"/>
-        </symbol>
       </svg>
 
       {/* ===== Ambient layer ===== */}
@@ -47,7 +43,16 @@ export default function HomePage() {
               <span className="dot" />
               One platform. Every tool your business needs.
             </div>
-            <h1 id="heroTitle">The power of one CRM platform</h1>
+            <h1 id="heroTitle">
+              {"The power of one CRM platform".split(" ").map((w, i) => (
+                <span key={i}>
+                  <span className="w">
+                    <span className={w === "one" || w === "CRM" ? "grad-txt" : undefined}>{w}</span>
+                  </span>
+                  {" "}
+                </span>
+              ))}
+            </h1>
             <div className="hero-rot">
               One login for{" "}
               <span className="rot-box">
@@ -138,9 +143,7 @@ export default function HomePage() {
 
       {/* ============ WHY ============ */}
       <section className="sec" id="why">
-        <svg className="deco-mark" viewBox="0 0 20 20" style={{ top: "-70px", right: "-90px" }}>
-          <use href="#optimiser-mark" />
-        </svg>
+        <img className="deco-mark" src="/assets/optimiser-icon.svg" alt="" style={{ top: "-70px", right: "-90px" }} />
         <div className="wrap">
           <div className="sec-head">
             <span className="eyebrow">Why Optimiser</span>
@@ -214,7 +217,7 @@ export default function HomePage() {
             <div className="ws rv-r" id="ws">
               <div className="ws-bar"><i /><i /><i /><span>app.optimiser.com/your-workspace</span></div>
               <div className="ws-head">
-                <svg className="ws-mark"><use href="#optimiser-mark" /></svg>
+                <img className="ws-mark" src="/assets/optimiser-icon.svg" alt="" />
                 <div><b>Your Optimiser</b><small id="wsCount">2 modules active</small></div>
                 <span className="ws-live"><i />LIVE</span>
               </div>
@@ -239,8 +242,8 @@ export default function HomePage() {
             Keep scrolling — watch sales, marketing, events and automations converge into a single, connected workspace.
           </p>
         </div>
-        <div className="ctx-track" id="ctxTrack" style={{ height: "1600px" }}>
-          <div className="ctx-wrapper" id="ctxWrapper" style={{ position: "sticky", top: 0, height: "100vh" }}>
+        <div className="ctx-track" id="ctxTrack" style={{ height: "calc(680px + 1400px)" }}>
+          <div className="ctx-wrapper" id="ctxWrapper" style={{ position: "sticky", top: "110px" }}>
             <div className="ctx-grid" />
             <div className="ctx-dots" />
             <svg className="ctx-beams" id="ctxBeams" aria-hidden="true" />
@@ -812,9 +815,7 @@ export default function HomePage() {
 
       {/* ============ TESTIMONIALS ============ */}
       <section className="sec" id="testimonials" style={{ paddingTop: "60px" }}>
-        <svg className="deco-mark" viewBox="0 0 20 20" style={{ bottom: "-80px", left: "-100px", animationDirection: "reverse" }}>
-          <use href="#optimiser-mark" />
-        </svg>
+        <img className="deco-mark" src="/assets/optimiser-icon.svg" alt="" style={{ bottom: "-80px", left: "-100px", animationDirection: "reverse" }} />
         <div className="wrap">
           <div className="sec-head">
             <span className="eyebrow">Wall of love</span>
@@ -843,12 +844,19 @@ export default function HomePage() {
       </section>
 
       {/* ============ ABOUT ============ */}
-      <div style={{ height: "900px" }}>
+      <div style={{ height: "calc(100vh + 850px)" }}>
       <section className="about-sec" id="about" style={{ position: "sticky", top: 0 }}>
         <div className="wrap">
           <span className="about-pill">About Optimiser</span>
           <p className="about-text" id="aboutText">
-            Optimiser is crafted to elevate how modern businesses work — uniting sales, marketing, events and customer data on one beautifully simple platform. With clean design and powerful automation, it helps teams engage, convert and grow.
+            {"Optimiser is crafted to elevate how modern businesses work — uniting sales, marketing, events and customer data on one beautifully simple platform. With clean design and powerful automation, it helps teams engage, convert and grow."
+              .split(/\s+/)
+              .map((w, i) => (
+                <span className="aw" key={i}>
+                  {w}
+                  {" "}
+                </span>
+              ))}
           </p>
         </div>
       </section>

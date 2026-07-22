@@ -115,10 +115,6 @@ export default function HomeAnimations() {
       (() => {
         const h1 = document.getElementById("heroTitle");
         if (!h1) return;
-        h1.innerHTML = (h1.textContent || "").trim().split(" ").map((w) => {
-          const cls = w === "one" || w === "CRM" ? " grad-txt" : "";
-          return `<span class="w"><span class="${cls}">${w}</span></span>`;
-        }).join(" ");
         const tl = gsap.timeline({ delay: reduced ? 0 : 0.15, defaults: { ease: "power4.out" } });
         tl.to(".hero-badge", { x: 0, opacity: 1, duration: 0.8 })
           .to("#heroTitle .w > span", { y: 0, duration: 1.1, stagger: 0.07 }, "-=.5")
@@ -400,14 +396,12 @@ export default function HomeAnimations() {
       (() => {
         const sec = document.getElementById("about");
         const txt = document.getElementById("aboutText");
-        if (!sec || !txt) return;
-        txt.innerHTML = (txt.textContent || "").trim().split(/\s+/).map((w) => `<span class="aw">${w}</span>`).join(" ");
+        if (!sec || !sec.parentElement || !txt) return;
         const words = txt.querySelectorAll(".aw");
         if (reduced) { gsap.set(words, { opacity: 1 }); return; }
-        const scrollContainer = sec.parentElement;
         gsap.to(words, {
           opacity: 1, stagger: 0.6, ease: "none", duration: 1,
-          scrollTrigger: { trigger: scrollContainer, start: "top top", end: "bottom bottom", scrub: 0.6 },
+          scrollTrigger: { trigger: sec.parentElement, start: "top top", end: "bottom bottom", scrub: 0.6 },
         });
       })();
 
