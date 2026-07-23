@@ -1,13 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const handleLogoClick = () => {
+    if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer>
       <div className="wrap">
         <div className="f-grid">
           <div>
-            <Link href="/" className="logo" aria-label="Optimiser home">
+            <Link href="/" className="logo" aria-label="Optimiser home" onClick={handleLogoClick}>
               <Image className="logo-img" src="/assets/optimiser-logo-dark-bg.svg" alt="Optimiser" width={120} height={40} style={{ height: "40px", width: "auto" }} />
             </Link>
             <p className="f-tag">The power of one CRM platform. Sales, marketing, events and more — together at last.</p>

@@ -177,7 +177,8 @@ export default function Nav() {
     <>
     <nav className="nav" id="nav" ref={navRef}>
       <Link href="/" className="logo" aria-label="Optimiser home">
-        <Image className="logo-img" src="/assets/optimiser-logo.svg" alt="Optimiser" width={120} height={34} style={{ height: "34px", width: "auto" }} />
+        <Image className="logo-img logo-img-light" src="/assets/optimiser-logo.svg" alt="Optimiser" width={120} height={34} style={{ height: "34px", width: "auto" }} />
+        <Image className="logo-img logo-img-dark" src="/assets/optimiser-logo-dark-bg.svg" alt="Optimiser" width={120} height={34} style={{ height: "34px", width: "auto" }} />
       </Link>
 
       <div className="nav-links">

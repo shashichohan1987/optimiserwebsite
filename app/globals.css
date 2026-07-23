@@ -23,6 +23,75 @@
   --ease: cubic-bezier(.16, 1, .3, 1);
 }
 
+/* ===== dark mode — toggled via body.dark, see components/ThemeToggle.tsx ===== */
+body.dark {
+  --bg: #04182F;
+  --bg-2: #0A2A4A;
+  --navy: #EAF3FB;
+  --navy-2: #D7E6F4;
+  --txt: #E4EDF6;
+  --mut: #9FB2C6;
+  --line: rgba(255, 255, 255, .10);
+  --line-2: rgba(255, 255, 255, .2);
+  background: var(--bg);
+  color: var(--txt);
+}
+
+body.dark ::selection {
+  background: var(--cyan);
+  color: #04182F;
+}
+
+.theme-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  background: #fff;
+  box-shadow: 0 0 0 1px var(--line) inset, 0 16px 40px -16px rgba(2, 18, 43, .5);
+}
+
+.theme-fab:hover {
+  background: var(--bg-2, #F2F8FD);
+}
+
+body.dark .theme-fab {
+  background: #0B2444;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .12) inset, 0 16px 40px -16px rgba(0, 0, 0, .7);
+}
+
+.theme-btn.theme-fab {
+  background: #fff;
+}
+
+body.dark .theme-btn.theme-fab {
+  background: #0B2444;
+}
+
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--navy);
+  background: transparent;
+  box-shadow: 0 0 0 1px var(--line-2) inset;
+  transition: background .3s;
+}
+
+.theme-btn:hover {
+  background: var(--bg-2);
+}
+
+.theme-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -31,6 +100,7 @@
 
 html {
   scroll-behavior: auto;
+  overflow-x: hidden;
 }
 
 html.lenis,
@@ -48,7 +118,6 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -219,7 +288,7 @@ img {
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  width: min(1180px, calc(100% - 48px));
+  width: min(1180px, calc(100% - 32px));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -231,13 +300,18 @@ img {
   transition: transform .5s var(--ease), opacity .4s;
 }
 
+body.dark .nav {
+  background: rgba(6, 26, 49, .78);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .1) inset, 0 12px 36px -16px rgba(0, 0, 0, .6);
+}
+
 .nav.hide {
   transform: translate(-50%, -130%);
 }
 
 @media(min-width:1500px) {
   .nav {
-    width: min(1320px, calc(100% - 48px));
+    width: min(1320px, calc(100% - 32px));
   }
 }
 
@@ -249,6 +323,18 @@ img {
 .logo-img {
   height: 34px;
   width: auto;
+  display: block;
+}
+
+.logo .logo-img-dark {
+  display: none;
+}
+
+body.dark .logo .logo-img-light {
+  display: none;
+}
+
+body.dark .logo .logo-img-dark {
   display: block;
 }
 
@@ -691,6 +777,90 @@ footer {
   background: var(--navy);
   color: rgba(255, 255, 255, .85);
   overflow: hidden;
+}
+
+body.dark footer {
+  background: #02122B;
+}
+
+/* any surface whose light-mode background ends in var(--navy) (a gradient's base-color layer)
+   would otherwise flip to near-white in dark mode, since --navy inverts for text-color purposes.
+   Overriding just background-color is safe: the "background" shorthand's trailing plain-color
+   value always sets background-color, independent of the gradient/image layers before it. */
+body.dark :is(.cband-r, .csr-media, .cta, .dhero-cover, .feat-stage, .hd-rev, .impact, .pull, .show-stage, .side-cta, .stack-one, .ut-int) {
+  background-color: #02122B;
+}
+
+/* dark-surface treatment for the many page-template "product mockup" card families
+   (challenge-band cards, builder/touchpoint mockups, integrations/suite mockups, orbit dots, etc.) */
+body.dark :is(.cb-h, .cb-c, .cb-f, .cb-list, .cb-pillar, .cb-stat, .cb-w, .t2-frame, .t2-block, .t2-drag, .t2-ghost, .t2-b, .t2-stat, .ig-hero, .ig-card, .ig-app, .ig-hub, .ss-card, .ss-fly, .ms-mail, .ms-seg, .ms-stat, .pm-card, .pm-tasks, .cc-drive, .sc-diary, .sh-day, .ccard, .hd-card, .hd-float, .chan, .form-card, .incl-card, .lm-inbox, .ev-list, .side-card, .pchip, .wf-node, .lstrip .lo, .orb-dot, .orb-pill) {
+  background-color: #0B2444;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset;
+}
+
+body.dark :is(.show-item.on, .vc-link) {
+  background-color: rgba(255, 255, 255, .08);
+}
+
+/* gradients using var(--navy)/var(--txt) as an internal stop (not the trailing plain-color
+   position) can't be fixed by overriding background-color alone - the whole background
+   needs replacing, since --navy/--txt flip to near-white for text-color purposes. */
+body.dark .coo-console {
+  background: linear-gradient(165deg, #0B2C55 0%, #02122B 70%);
+}
+
+/* SSO button: fixed white text over a var(--navy)-based gradient, which flips to near-white */
+body.dark .sso-btn.primary-sso {
+  background: linear-gradient(120deg, #0A2342, #02122B);
+}
+
+body.dark .sso-btn.primary-sso:hover {
+  background: linear-gradient(120deg, #10325c, #0A2342);
+}
+
+/* verification code input: focus/filled states force a literal white background */
+body.dark :is(.code-box:focus, .code-box.filled) {
+  background-color: #0B2444;
+}
+
+/* shared dark-surface card/panel treatment used across most pages */
+body.dark :is(.btn-gho, .mega-inner, .stack-card, .frow, .pillars, .pcard, .hero-shot-frame, .plat-bar, .plat-bar .url, .f-vis, .fcard, .vcard, .ind, .why, .subnav, .card, .pg-card, .stat, .t-card, .pick) {
+  background: linear-gradient(180deg, #06203C 0%, #04182F 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset;
+}
+
+body.dark :is(.btn-gho.on-dark, .hero-chip) {
+  background: rgba(6, 26, 49, .75);
+}
+
+/* dark-surface treatment for content-hub card families (blog, case studies, CSR, testimonial, what's new, media) */
+body.dark :is(.bfeat, .bcard, .feat, .qcard, .rcard, .tl-card) {
+  background: #0B2444;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .08) inset;
+}
+
+body.dark .fpill {
+  background: rgba(255, 255, 255, .08);
+  box-shadow: none;
+}
+
+body.dark .tl-node {
+  background: #0B2444;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .16) inset;
+}
+
+/* content-hub / lead-capture inputs and pills that keep a light background with (now-light) variable text */
+body.dark :is(.sb-form input, .wn-search input, .trust-row .tl) {
+  background-color: #0B2444;
+}
+
+/* page-specific light hero gradients that don't derive from --bg/--navy */
+body.dark .wn-hero {
+  background: linear-gradient(170deg, #04182F 0%, #071E39 35%, #0A2A4A 68%);
+}
+
+body.dark .trial-hero {
+  background: radial-gradient(ellipse 70% 60% at 88% 6%, rgba(0, 161, 223, .22), transparent 58%), linear-gradient(180deg, #04182F 0%, #071E39 46%, #0A2A4A 100%);
 }
 
 footer .logo {

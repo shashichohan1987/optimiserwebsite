@@ -6,7 +6,7 @@
   --r-lg:24px;--r-md:16px;--ease:cubic-bezier(.16,1,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background:
+body{color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;background:
   radial-gradient(ellipse 70% 60% at 78% 0%,rgba(0,161,223,.14),transparent 60%),
   radial-gradient(ellipse 60% 50% at 0% 100%,rgba(7,93,168,.18),transparent 60%),
   linear-gradient(180deg,#04182F 0%,#07203E 100%)}

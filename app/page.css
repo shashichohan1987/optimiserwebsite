@@ -403,3 +403,17 @@
 .orb-1 { width:540px; height:540px; left:-200px; top:16%; background:radial-gradient(circle,rgba(0,161,223,.7),transparent 70%); animation:drift 28s ease-in-out infinite alternate; }
 .orb-2 { width:480px; height:480px; right:-180px; top:58%; background:radial-gradient(circle,rgba(7,93,168,.65),transparent 70%); animation:drift 34s ease-in-out -9s infinite alternate-reverse; }
 @keyframes drift { from { transform:translate(0,0) scale(1); } to { transform:translate(70px,-90px) scale(1.18); } }
+
+/* ===== dark mode — homepage-specific overrides (shared nav/footer/base vars live in globals.css) ===== */
+body.dark :is(.btn-gho,.mega-inner,.hero-shot-frame,.card,.pg-card,.stat,.t-card,.pick,.sec-band,.plat-tab,.plat-frame,.plat-bar .url,.plat-screens,.coo-chip) { background:#0B2444; }
+body.dark :is(.btn-gho,.mega-inner,.hero-shot-frame,.card,.pg-card,.stat,.t-card,.pick,.sec-band,.plat-tab,.plat-frame,.plat-bar .url,.plat-screens,.coo-chip) { box-shadow:0 0 0 1px rgba(255,255,255,.08) inset; }
+body.dark :is(.btn-gho.on-dark,.hero-chip,.sat,.ind-ic,.plat-badge) { background:rgba(6,26,49,.75); }
+body.dark :is(.btn-gho,.mega-inner,.hero,.hero-shot-frame,.orbit-core span,.card,.stack-card:nth-child(1),.stack-card:nth-child(2),.stack-card:nth-child(3),.stack-card:nth-child(4),.mock-flow .wire::after,.pg-card,.stat,.t-card,.pick,.sec-band,.ctx-core>span,.plat,.plat-tab,.plat-frame,.plat-bar,.plat-bar .url,.plat-screens,.coo-sec,.coo-chip) { background:linear-gradient(180deg,#06203C 0%,#04182F 100%); }
+body.dark :is(.pick.sel,.about-sec) { background:#02122B; }
+body.dark .hero::after { background:linear-gradient(180deg,rgba(4,24,47,.25) 0%,rgba(4,24,47,0) 42%,rgba(4,24,47,.92) 100%),radial-gradient(ellipse 70% 60% at 50% 30%,rgba(10,42,74,.55),rgba(4,24,47,.3) 55%,transparent 78%); }
+body.dark .hero-badge,
+body.dark .hero .pill { color:var(--txt); }
+body.dark .hero-badge { background:rgba(10,42,74,.8); color:#BFE3FA; box-shadow:0 0 0 1px rgba(0,161,223,.35) inset,0 6px 18px -10px rgba(0,0,0,.5); }
+body.dark :is(.orbit-core,.prod-vis,.j-vis,.ws,.ind-card,.ind-card.lead,.cta,.impact,.ctx-sec,.coo-console) { background:radial-gradient(ellipse 80% 110% at 85% -20%,rgba(0,161,223,.22),transparent 60%),radial-gradient(ellipse 70% 100% at 10% 120%,rgba(7,93,168,.3),transparent 60%),#02122B; }
+body.dark .ind-card.lead { background:linear-gradient(150deg,#075DA8 0%,#06376B 45%,#02122B 100%); }
+body.dark .ind-card { background:linear-gradient(150deg,#0A2E55 0%,#02122B 100%); }

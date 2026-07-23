@@ -359,10 +359,10 @@ export default function EventManagementPage() {
                 card required.
               </p>
               <div className="cta-btns">
-                <a className="btn btn-pri" href="#">
+                <a className="btn btn-pri" href="/free-crm">
                   Try for free <span className="arr">→</span>
                 </a>
-                <a className="btn btn-gho on-dark" href="#">
+                <a className="btn btn-gho on-dark" href="/contact-us">
                   Schedule a demo
                 </a>
               </div>

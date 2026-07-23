@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Inter, Space_Mono } from "next/font/google";
+import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 const sora = Sora({
@@ -49,6 +50,7 @@ export default function RootLayout({
           </defs>
         </svg>
         {children}
+        <ThemeToggle />
       </body>
     </html>
   );
